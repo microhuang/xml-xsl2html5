@@ -1,0 +1,379 @@
+(1)保存为:index.css文件
+
+
+/*主体*/
+body{
+margin:0;
+font-size:12px;
+text-align:center;
+color:#000;
+font-family:'Lucida Grande','Lucida Sans Unicode','宋体','新宋体',arial,verdana,sans-serif;
+}
+#top{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:760px;
+height:24px;
+}
+#menu{
+position:relative;
+margin-left:-2px;
+}
+#menu ul{
+margin:0,0,0,-2px;
+TEXT-ALIGN: center; 
+display:inline;
+}
+#menu li{
+display:block;
+width:80px;
+float:left;
+list-style-type:none;
+MARGIN: 1px;
+TEXT-ALIGN: center;
+BORDER:#000 1px solid;
+LINE-HEIGHT:20px;
+}
+#menu li a{
+display: block;
+width: 100%; 
+color: #cc33cc; 
+text-decoration: none;
+background-color:#e9fafe;
+}
+#menu li a:hover {
+background-color:#ffffff;
+}
+#main{
+width:760px;
+position:relative;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+margin-top:0px;
+
+border:1px solid #000;
+display:table;
+}
+#mainleft{
+position:relative;
+text-align:left;
+float:left;
+width:200px;
+margin:4px;
+border:1px dotted #999;
+}
+.bloglist{
+width:500px;
+list-style-type:none;
+MARGIN: 4px;
+PADDING:2px;
+TEXT-ALIGN: left;
+BORDER:#999 1px dotted;
+LINE-HEIGHT:20px;}
+#logoarea{
+height:100px;
+width:760px;
+border:1px solid #000;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+background:url("images/logo.jpg") #fff no-repeat;
+}
+.lefttitle{
+position:relative;
+height:18px;
+line-height:18px;
+display:block;
+font-size:13px;
+text-align:center;
+font-weight:500;
+background:#001A7D;
+color:#fff;
+}
+.left2{
+text-indent: 2em;
+background:#D5DDFB;
+line-height:18px;
+}
+.listul{
+margin-top:-14px;
+margin-left:-40px;
+
+}
+.listul li{
+width:197px;
+height:22px;
+list-style-type:none;
+TEXT-ALIGN: left;
+LINE-HEIGHT:20px;
+}
+.listul li a{
+display: block;
+width: 100%;
+color: #cc33cc; 
+text-decoration: none;
+text-indent:1em;
+background-color:#fff;
+}
+.listul li a:hover {
+border:1px solid #999;
+}
+#bulletintime
+{
+text-align:right;
+background:#D5DDFB;
+}
+#bottom{
+clear:both;
+margin:10px;
+} 
+
+
+
+
+
+
+
+
+(2)保存为:index.xsl文件
+
+
+
+
+
+<?xml version="1.0" encoding="GB2312"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:template match="/">
+<html>
+  <head>
+   <title>天凡的小窝</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
+   <link type="text/css" media="all" rel="stylesheet" href="index.css"/>
+  </head>
+  <body>
+  <div id="top">
+   <div id="menu"> <!--顶部菜单-->
+     <ul>
+      <xsl:apply-templates select="//menu"/>
+     </ul>
+   </div>
+   </div>
+   <div id="logoarea"> <!--logo和banner-->
+   </div>
+   <div id="main"><!--主体部分-->
+     <div id="mainleft"><!--主体左侧-->
+      <div id="leftbulletin"><!--左侧公告-->
+       <xsl:apply-templates select="//bulletin"/>
+      </div>
+      <div><!--关于本站-->
+       <xsl:apply-templates select="//aboutmysite"/>
+      </div>
+      <div><!--新文章列表-->
+      <div class="lefttitle">新日志列表</div>
+      <div class="listul">
+      <ul>
+       <xsl:apply-templates select="//mytitlelist"/>
+       </ul>
+      </div>
+      </div>
+      <div><!--友情链接-->
+      <div class="lefttitle">友情链接</div>
+      <div class="listul">
+       <ul>
+       <xsl:apply-templates select="//myfriendlink"/>
+       </ul>
+       </div>
+      </div>
+     </div>
+     <div><!--主体右侧-->
+      <ul>
+      <xsl:apply-templates select="//mybloglist"/>
+      </ul>
+     </div>
+   </div>
+   <div id="bottom"><!--底部版权部分-->
+     <xsl:apply-templates select="//copyright"/>
+   </div>  
+  </body>
+</html>
+</xsl:template>
+<xsl:template match="//menu">
+  <xsl:for-each select="child::topmenu">
+  <li>
+   <a target="_blank">
+    <xsl:attribute name="href">
+     <xsl:value-of select="hyperlink"/>
+    </xsl:attribute>    
+    <xsl:value-of select="item"/>
+   </a>
+  </li>
+</xsl:for-each>
+</xsl:template>
+<xsl:template match="//bulletin">
+  <div class="lefttitle">本站公告</div>
+  <div class="left2">
+   <xsl:value-of select="content"/>
+  </div>
+  <div id="bulletintime">
+   <xsl:value-of select="time"/>
+  </div>
+</xsl:template>
+<xsl:template match="// aboutmysite">
+  <div class="lefttitle">关于本站</div>
+  <div class="left2">
+   <xsl:value-of select="content"/>
+  </div>
+  <div id="bulletintime">
+   <xsl:value-of select="time"/>
+  </div>
+</xsl:template>
+<xsl:template match="mytitlelist">
+  <xsl:for-each select="child::titlelist">
+   <li>
+    <a target="_blank">
+    <xsl:attribute name="href">
+     <xsl:value-of select="hyperlink"/>
+    </xsl:attribute>    
+    <xsl:value-of select="item"/>
+   </a>
+   </li>
+  </xsl:for-each>
+</xsl:template>
+<xsl:template match="//myfriendlink">
+    <xsl:for-each select="child::friendlink">
+   <li>
+    <a target="_blank">
+    <xsl:attribute name="href">
+     <xsl:value-of select="hyperlink"/>
+    </xsl:attribute>    
+    <xsl:value-of select="item"/>
+   </a>
+   </li>
+  </xsl:for-each>
+</xsl:template>
+
+<xsl:template match="//mybloglist">
+   <xsl:for-each select="child::bloglist">
+   <li class="bloglist">
+    <div>标题：<xsl:value-of select="title"/></div>
+    <div>日志发表时间：<xsl:value-of select="time"/>日志类别：<xsl:value-of select="kind"/></div>
+    <div class="myblogcontent">内容摘要：
+    <a target="_blank">
+    <xsl:attribute name="href">
+     <xsl:value-of select="hyperlink"/>
+    </xsl:attribute>    
+    <xsl:value-of select="item"/>
+   </a>
+   </div>
+   <div>浏览量：<xsl:value-of select="clicknum"/></div>
+   </li>
+  </xsl:for-each>
+</xsl:template>
+<xsl:template match="//copyright">
+  <div><xsl:value-of select="author"/></div>
+  <div><xsl:value-of select="time"/>
+  <xsl:value-of select="version"/></div>
+  <div>E-mail:<xsl:value-of select="email"/></div>
+</xsl:template>
+</xsl:stylesheet>
+
+
+
+
+<//--(3)保存为:index.xml文件-->
+
+
+
+
+
+
+<?xml version="1.0" encoding="GB2312"?>
+<?xml-stylesheet type="text/xsl" href="index.xsl"?>
+<myblog>
+<menu>
+  <topmenu>
+   <item>日志首页</item>
+   <hyperlink>index.xml</hyperlink>
+  </topmenu>
+  <topmenu>
+   <item>留言板</item>
+   <hyperlink>guestbook.xml</hyperlink>
+  </topmenu>
+  <topmenu>
+   <item>站长资料</item>
+   <hyperlink>aboutme.xml</hyperlink>
+  </topmenu>
+  <topmenu>
+   <item>订阅RSS2.0</item>
+   <hyperlink>rss2.xml</hyperlink>
+  </topmenu>
+</menu>
+<bulletin>
+  <content>经过六七个钟头的苦战，这个页子模型算是可以告一段落了，版本号定为Ver0.01，欢迎大家批评</content>
+  <time>2006-3-20 上午 01:48:11</time>
+</bulletin>
+<copyright>
+  <author>程序:天凡</author>
+  <time>2006年3月20日</time>
+  <version>version:0.02</version>
+  <email>arrbo#163.com请自行将#换成@</email>
+</copyright>
+  <aboutmysite>  
+   <content>
+    <![CDATA[     公告公告，这里是公告栏。
+    ]]>
+        </content>
+</aboutmysite>
+<mytitlelist>
+<titlelist>
+  <item>标题一</item>
+  <hyperlink>http://www.aaa..com/bbb.xml</hyperlink>
+</titlelist>
+<titlelist>
+  <item>标题二</item>
+  <hyperlink>http://www.aaa..com/bbb.xml</hyperlink>
+</titlelist>
+</mytitlelist>
+<myfriendlink>
+<friendlink>
+  <item>友情链接文字一</item>
+  <hyperlink>http://www.aaa.com</hyperlink>
+</friendlink>
+  <friendlink>
+  <item>友情链接文字二</item>
+  <hyperlink>http://www.aaa.com</hyperlink>
+</friendlink>
+  <friendlink>
+  <item>友情链接文字三</item>
+  <hyperlink>http://www.aaa.com</hyperlink>
+</friendlink>
+</myfriendlink>
+<mybloglist>
+   <bloglist>
+    <title>继续更新</title>
+    <time>2006年3月21日1时03分</time>
+    <kind>分类</kind>
+    <item><![CDATA[内容缩略一内容缩略一.......]]></item>
+        <hyperlink>http://www.aaa.com/aaa.xml</hyperlink>
+    <clicknum>点击数9</clicknum>    
+  </bloglist>
+  <bloglist>
+    <title>终于完成了0.01版的部分基本结构</title>
+    <time>2006年3月20日1时40分</time>
+    <kind>分类</kind>
+    <item>
+    <![CDATA[     内容缩略二内容缩略二.......。
+    ]]>
+    </item>
+        <hyperlink>http://www.aaa.com/aaa.xml</hyperlink>
+    <clicknum>点击数1</clicknum>   
+</bloglist>
+</mybloglist>
+</myblog>
+
+ 
+
+ 
+<//--把它们放在一个盘中:点index.xml查看即可.-->

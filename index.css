@@ -1,0 +1,128 @@
+/*主体*/
+body{
+margin:0;
+font-size:12px;
+text-align:center;
+color:#000;
+font-family:'Lucida Grande','Lucida Sans Unicode','宋体','新宋体',arial,verdana,sans-serif;
+}
+#top{
+position:relative;
+margin-left:auto;
+margin-right:auto;
+width:760px;
+height:24px;
+}
+#menu{
+position:relative;
+margin-left:-2px;
+}
+#menu ul{
+margin:0,0,0,-2px;
+TEXT-ALIGN: center; 
+display:inline;
+}
+#menu li{
+display:block;
+width:80px;
+float:left;
+list-style-type:none;
+MARGIN: 1px;
+TEXT-ALIGN: center;
+BORDER:#000 1px solid;
+LINE-HEIGHT:20px;
+}
+#menu li a{
+display: block;
+width: 100%; 
+color: #cc33cc; 
+text-decoration: none;
+background-color:#e9fafe;
+}
+#menu li a:hover {
+background-color:#ffffff;
+}
+#main{
+width:760px;
+position:relative;
+text-align:center;
+margin-left:auto;
+margin-right:auto;
+margin-top:0px;
+
+border:1px solid #000;
+display:table;
+}
+#mainleft{
+position:relative;
+text-align:left;
+float:left;
+width:200px;
+margin:4px;
+border:1px dotted #999;
+}
+.bloglist{
+width:500px;
+list-style-type:none;
+MARGIN: 4px;
+PADDING:2px;
+TEXT-ALIGN: left;
+BORDER:#999 1px dotted;
+LINE-HEIGHT:20px;}
+#logoarea{
+height:100px;
+width:760px;
+border:1px solid #000;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+background:url("images/logo.jpg") #fff no-repeat;
+}
+.lefttitle{
+position:relative;
+height:18px;
+line-height:18px;
+display:block;
+font-size:13px;
+text-align:center;
+font-weight:500;
+background:#001A7D;
+color:#fff;
+}
+.left2{
+text-indent: 2em;
+background:#D5DDFB;
+line-height:18px;
+}
+.listul{
+margin-top:-14px;
+margin-left:-40px;
+
+}
+.listul li{
+width:197px;
+height:22px;
+list-style-type:none;
+TEXT-ALIGN: left;
+LINE-HEIGHT:20px;
+}
+.listul li a{
+display: block;
+width: 100%;
+color: #cc33cc; 
+text-decoration: none;
+text-indent:1em;
+background-color:#fff;
+}
+.listul li a:hover {
+border:1px solid #999;
+}
+#bulletintime
+{
+text-align:right;
+background:#D5DDFB;
+}
+#bottom{
+clear:both;
+margin:10px;
+} 
